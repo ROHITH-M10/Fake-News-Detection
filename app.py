@@ -1,8 +1,10 @@
 import streamlit as st
+import pandas as pd
 import joblib
 import re
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
+from statistics import mode
 
 
 
@@ -19,21 +21,14 @@ def stemming(text):
     stemming_text = ' '.join(temp_stemming_text_list)
     return stemming_text
 
-def show_prediction():
-
-    user_input = stemming(user_input)
-    user_input = [user_input]
-    user_input = vector.transform(user_input)
-    user_input_pred = model.predict(user_input)
-
-    if user_input_pred == 0:
-        st.write('This is a Fake News')
-    else:
-        st.write('This is a Real News')
 
 
-model = joblib.load('model.pkl')
+model_lr = joblib.load('model_lr.pkl')
+model_dt = joblib.load('model_dt.pkl')
+model_rf = joblib.load('model_rf.pkl')
 vector = joblib.load('vectorizer.pkl')
+
+print(model_dt)
 
 
 st.title(':blue[Real or Fake News Prediction]')
@@ -49,13 +44,28 @@ if st.button('Predict'):
         user_input = stemming(user_input)
         user_input = [user_input]
         user_input = vector.transform(user_input)
-        user_input_pred = model.predict(user_input)
 
+        user_input_pred_lr = model_lr.predict(user_input)
+        user_input_pred_dt = model_dt.predict(user_input)
+        user_input_pred_rf = model_rf.predict(user_input)
+
+        
+
+
+        user_input_pred = mode([user_input_pred_lr[0], user_input_pred_dt[0], user_input_pred_rf[0]])
 
         if user_input_pred == 0:
             st.subheader(':large_red_square: This is a Fake News')
         else:
             st.subheader(':large_green_square: This is a Real News')
+
+        
+        pred_df = pd.DataFrame({
+                'Model': ['Logistic Regression', 'Decision Tree', 'Random Forest'],
+                'Prediction': [user_input_pred_lr[0], user_input_pred_dt[0], user_input_pred_rf[0]]
+                })
+
+        st.dataframe(pred_df)
 
 
 
