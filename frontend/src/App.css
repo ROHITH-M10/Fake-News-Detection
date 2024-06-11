@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #0fabce76;
+}
+
+.app-container-outer{
+
+}
+.app-container-inside{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 40vw;
+    background-color:white;
+    margin: 10vh auto;
+
+}
+.app-header{
+    color: black;
+    padding: 20px 10px 10px 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+textarea{
+    width: 90%;
+    height: 60%;
+    margin: 10px auto;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+    padding: 4px;
+    line-height: 1.4;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    scrollbar-width: none;
+    border: solid 2px black;
+
+
+}
+
+.app-container-inside button{
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    border: solid 2px black;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.app-container-inside button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.app-container-inside .app-result{
+    /* text not button */
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px; 
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 1.4;
+        
+}
+
+.app-result span{
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 768px){
+    .app-container-inside{
+        width: 80vw;
+    }
+
+    textarea{
+        width: 90%;
+        height: 50%;
+    }
+
+    .app-container-inside button{
+        width: 90%;
+    }
+
+    .app-result{
+        width: 90%;
+    }
+
+    .app-result span{
+        padding: 5px;
+    }
+
+
+    
+}
