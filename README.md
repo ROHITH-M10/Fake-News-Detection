@@ -8,9 +8,9 @@ The dataset used for this project can be found on Kaggle: [Fake News Detection D
 ## Model
 The model for fake news detection is based on logistic regression.
 
-## Interface Streamlit
+## Interface - Streamlit
 ![Interface](Interface.png)
 
-## Interface React
+## Interface - React, Flask
 ![Interface](React-Interface.png)
 
