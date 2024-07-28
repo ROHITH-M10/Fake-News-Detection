@@ -29,7 +29,8 @@ def get_home():
 def predict():
     try:
         
-        data = str(request.get_json())
+        data = request.get_json()
+        data = data['text']
         
         stemming_text = re.sub('[^a-zA-Z]', ' ', data)
         stemming_text = stemming_text.lower() 
